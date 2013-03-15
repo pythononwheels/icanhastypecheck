@@ -1,8 +1,8 @@
-icanhastype
-===========
+icanhastype (ICHT)
+==================
 
-a simple module to enable dynamic type checking for python method/function calls. 
-Implemented as a decortor. Workinf for python 2.x and 3.x.
+a simple python module/library to enable dynamic type checking for python 
+method/function calls. Implemented as a decortor. Workinf for python 2.x and 3.x.
 
 Based on annotations for python &gt; 3.x and a naming convention for python &lt; 3.x
 
@@ -26,12 +26,12 @@ All annotated parameter types can be any python expression.
 But for typechecking only types make sense, though.
 
 Since this feature was added from python 3.0 the way I chose for implementing typechecking for
-python 2.x is a documentation convention for parameters based on [the info field lists of sphinx](http://sphinx-doc.org/markup/desc.html#info-field-lists)
+python 2.x is a documentation convention for parameters based on [the info field lists of sphinx](http://sphinx-doc.org/markup/desc.html#info-field-lists). So even when you don't use typechecking you can use it to auto-generate a function documentation.
 
 So for python 2.x the Syntax is:
 ```python
 	@typecheck
-	def foo( param_a, param_b):
+	def foo(param_a, param_b):
 		""" 
 			:type param_a: str
 			:type param_b: int
@@ -45,6 +45,36 @@ So for python 2.x the Syntax is:
 The decorator typecheck will first check if it is running in a 3.x or 2.x environment and 
 react accordingly.
 
+
+Two possible syntactical options for type declarations for python 2.x I am currently thinking of are:
+
+```python
+	@typecheck
+	def foo(param_a, param_b):
+		""" 
+			:type param_a: str
+			:type param_b: int
+			:rtype: bool	
+		 """
+		# Do Something 
+		return True
+```
+
+
+```python
+	@typecheck
+	def foo(param_a, param_b):
+		""" 
+			:type param_a: str
+			:type param_b: int
+			:rtype: bool	
+		 """
+		# Do Something 
+		return True
+```
+
+
+IcanHasType refers to the [famous lolcats](http://en.wikipedia.org/wiki/I_Can_Has_Cheezburger%3F)
 
 
 
