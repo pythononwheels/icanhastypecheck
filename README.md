@@ -1,4 +1,4 @@
-icanhastypecheck (ICHTC)
+IcanHasTypeCheck (ICHTC)
 ==================
 
 is a simple python module/library to enable dynamic type checking for python 
