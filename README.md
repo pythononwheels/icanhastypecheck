@@ -46,11 +46,18 @@ The decorator typecheck will first check if it is running in a 3.x or 2.x enviro
 react accordingly.
 
 
-Two possible syntactical options for type declarations for python 2.x I am currently thinking of are:
+An alternative to the current way for type declarations could be to use
+a simple argument naming_convention: using a type as argument prefix.
+This might speed up the matching calculation but has the drawback
+of binding the type semantically to the argument name. Will be more effort if
+type changes during code evolution. On the other hand gives type info right
+where you might need it.  Anyway. I might add this as an option. 
+
+It will look like this: (the docstring is not mandatory, then.)
 
 ```python
 	@typecheck
-	def foo(param_a, param_b):
+	def foo(str_param_a, int_param_b):
 		""" 
 			:type param_a: str
 			:type param_b: int
@@ -61,20 +68,7 @@ Two possible syntactical options for type declarations for python 2.x I am curre
 ```
 
 
-```python
-	@typecheck
-	def foo(param_a, param_b):
-		""" 
-			:type param_a: str
-			:type param_b: int
-			:rtype: bool	
-		 """
-		# Do Something 
-		return True
-```
-
-
-IcanHasType refers to the [famous lolcats](http://en.wikipedia.org/wiki/I_Can_Has_Cheezburger%3F)
+BTW: The project name "IcanHasType" refers to the [famous lolcats](http://en.wikipedia.org/wiki/I_Can_Has_Cheezburger%3F)
 
 
 
