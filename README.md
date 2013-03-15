@@ -20,7 +20,8 @@ It will raise a TypeError if the arguments don't match the function specificatio
 ```
 
 
-Base are the Function Annotations proposed in [PEP 3107](http://www.python.org/dev/peps/pep-3107/).
+The base technique for py 3.x are the Function Annotations proposed 
+in [PEP 3107](http://www.python.org/dev/peps/pep-3107/). 
 They were imlpemented in [Python 3.0](http://docs.python.org/3.0/whatsnew/3.0.html) (see section New Syntax).
 
 All annotated parameter types can be any python expression. 
@@ -43,9 +44,22 @@ python 2.x is a documentation convention for parameters based on [the info field
 		return True
 ```
 
+###Types can be specified as defines in the types module. Like:
+```python
+	def foo(afunc, param_b):
+		""" 
+			:type afunc: 	FunctionType
+			:type param_b: 	NoneType
+			:rtype: 		BooleanType
+		"""
+		...
+```
 
 The decorator typecheck will first check if it is running in a 3.x or 2.x environment and 
 react accordingly.
+
+
+####Alternative Syntax and thoughts:
 
 
 An alternative to the current way for type declarations could be to use
@@ -69,6 +83,7 @@ It will look like this: (the docstring is not mandatory, then.)
 		return True
 ```
 
+### Why is it called IcanHasType ?
 
 BTW: The project name "IcanHasType" refers to the [famous lolcats](http://en.wikipedia.org/wiki/I_Can_Has_Cheezburger%3F)
 

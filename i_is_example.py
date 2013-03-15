@@ -6,12 +6,14 @@
 
 import re, sys
 import inspect
+from typecheck import typesafe
 
-def foo( param_a, param_b, param_c=42, param_d="atest"):
+@typesafe
+def foo( param_a, param_b):
 		""" 
-			:type param_a: str
-			:type param_b: int
-			:rtype: bool	
+			:type param_a: IntType
+			:type param_b: StringType
+			:rtype: BooleanType	
 		 """
 		# Do Something 
 		print "foo"
@@ -28,7 +30,7 @@ def print_list(name, l):
 
 
 if __name__ == "__main__":
-	foo(1,2)
+	foo(1, "test2")
 	spec = inspect.getargspec(foo)
 	doc = inspect.getdoc(foo)
 	print spec
@@ -40,3 +42,7 @@ if __name__ == "__main__":
 	print_list("type", res)
 	res = rtypes.findall(doc)
 	print_list("rtype", res)
+
+	rtypes = rtypes.findall(doc)
+
+
