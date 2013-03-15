@@ -11,20 +11,20 @@ perform the according (dynamic) typechecking.
 It will raise a TypeError if the arguments don't match the function specification.
 
 ## Python 3.x
-For python 3.x IcanHasTypeCheck uses Function Annotations as proposed 
+The base technique for py 3.x are the Function Annotations proposed 
 in [PEP 3107](http://www.python.org/dev/peps/pep-3107/). 
 They were imlpemented in [Python 3.0](http://docs.python.org/3.0/whatsnew/3.0.html) (see section New Syntax).
 
 ###Syntax for python 3.x:
 
 ```python
-	@typesafe
+	@typecheck
 	def foo(param_a: str, param_b: int) -> bool:
 		# Do Something 
 		return True
 ```
-@typesafe just takes the specified argument types and return types and checks them dynamically whenever
-foo is called. As a remark from the PEP: "All annotated parameter types can be any python expression. "
+
+All annotated parameter types can be any python expression. 
 But for typechecking only types make sense, though.
 
 ## Python 2.x
@@ -35,7 +35,7 @@ There is an alternative approach for those of you who don't like docstings in sp
 ###Syntax for python 2.x / docstrings:
 
 ```python
-	@typesafe
+	@typecheck
 	def foo(param_a, param_b):
 		""" 
 			:type param_a: 	StringType
@@ -61,7 +61,7 @@ The decorator typecheck will first check if it is running in a 3.x or 2.x enviro
 react accordingly.
 
 
-##Alternative Syntax and thoughts:
+####Alternative Syntax and thoughts:
 
 
 An alternative to the current way for type declarations could be to use
