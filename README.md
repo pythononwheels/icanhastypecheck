@@ -13,7 +13,7 @@ It will raise a TypeError if the arguments don't match the function specificatio
 Usage is for python 3.x:
 ```python
 	@typecheck
-	def foo( param_a: str, param_b: int) -> bool:
+	def foo(param_a: str, param_b: int) -> bool:
 		# Do Something 
 		return True
 ```
@@ -26,13 +26,17 @@ All annotated parameter types can be any python expression.
 But for typechecking only types make sense, though.
 
 Since this feature was added from python 3.0 the way I chose for implementing typechecking for
-python 2.x is a naming convention for parameters.
+python 2.x is a naming convention for parameters based on [the info field lists of sphinx](http://sphinx-doc.org/markup/desc.html#info-field-lists)
 
 So for python 2.x the Syntax is:
 ```python
 	@typecheck
-	def foo( str_param_a, int_param_b):
-		# retval: bool
+	def foo( param_a, param_b):
+		""" 
+			:type param_a: str
+			:type param_b: int
+			:rtype: bool	
+		 """
 		# Do Something 
 		return True
 ```
