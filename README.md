@@ -38,15 +38,15 @@ There is an alternative approach for those of you who don't like docstings in sp
 	@typecheck
 	def foo(param_a, param_b):
 		""" 
-			:type param_a: str
-			:type param_b: int
-			:rtype: bool	
+			:type param_a: 	StringType
+			:type param_b: 	IntType
+			:rtype: 		BooleanType	
 		 """
 		# Do Something 
 		return True
 ```
 
-###Types can be specified as defines in the types module. Like:
+###Types can be specified as defined in the types module. Like:
 ```python
 	def foo(afunc, param_b):
 		""" 
