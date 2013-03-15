@@ -75,7 +75,7 @@ where you might need it.  Anyway. I might add this as an option.
 It will look like this: (the docstring is not mandatory, then.)
 
 ```python
-	@typecheck
+	@typesafe
 	def foo(str_param_a, int_param_b):
 		""" 
 			Some Docstring ...
