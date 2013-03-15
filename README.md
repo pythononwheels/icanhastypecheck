@@ -15,7 +15,7 @@ The base technique for py 3.x are the Function Annotations proposed
 in [PEP 3107](http://www.python.org/dev/peps/pep-3107/). 
 They were imlpemented in [Python 3.0](http://docs.python.org/3.0/whatsnew/3.0.html) (see section New Syntax).
 
-###Usage is for python 3.x:
+###Syntax for python 3.x:
 
 ```python
 	@typecheck
@@ -32,7 +32,7 @@ Since function annotations are not available in python 2.x the way I chose to im
 python 2.x is a documentation convention for parameters based on [the info field lists of sphinx](http://sphinx-doc.org/markup/desc.html#info-field-lists). So even when you don't use typechecking you can use it to auto-generate a function documentation.
 There is an alternative approach for those of you who don't like docstings in sphinx format which úses a naming convention. (See Alternatives below)
 
-###Usage for python 2.x / docstrings:
+###Syntax for python 2.x / docstrings:
 
 ```python
 	@typecheck
