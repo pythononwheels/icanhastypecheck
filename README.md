@@ -26,7 +26,7 @@ All annotated parameter types can be any python expression.
 But for typechecking only types make sense, though.
 
 Since this feature was added from python 3.0 the way I chose for implementing typechecking for
-python 2.x is a naming convention for parameters based on [the info field lists of sphinx](http://sphinx-doc.org/markup/desc.html#info-field-lists)
+python 2.x is a documentation convention for parameters based on [the info field lists of sphinx](http://sphinx-doc.org/markup/desc.html#info-field-lists)
 
 So for python 2.x the Syntax is:
 ```python
