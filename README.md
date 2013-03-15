@@ -1,13 +1,13 @@
-icanhastype (ICHT)
+icanhastypecheck (ICHTC)
 ==================
 
-a simple python module/library to enable dynamic type checking for python 
+is a simple python module/library to enable dynamic type checking for python 
 method/function calls. Implemented as a decortor. Workinf for python 2.x and 3.x.
 
 Based on annotations for python &gt; 3.x and a naming convention for python &lt; 3.x
 
-IcanHasType is a simple decorator that can be attached to any function or method and will
-perform the according (dynamic) typecheck.
+it is implemented as a decorator that can be attached to any function or method and will
+perform the according (dynamic) typechecking.
 It will raise a TypeError if the arguments don't match the function specification.
 
 ###Usage is for python 3.x:
@@ -75,17 +75,16 @@ It will look like this: (the docstring is not mandatory, then.)
 	@typecheck
 	def foo(str_param_a, int_param_b):
 		""" 
-			:type param_a: str
-			:type param_b: int
-			:rtype: bool	
+			Some Docstring ...
 		 """
 		# Do Something 
 		return True
 ```
 
-### Why is it called IcanHasType ?
 
-BTW: The project name "IcanHasType" refers to the [famous lolcats](http://en.wikipedia.org/wiki/I_Can_Has_Cheezburger%3F)
+### Why is it called IcanHasTypeCheck ?
+
+BTW: The project name "IcanHasTypeCheck" refers to the [famous lolcats](http://en.wikipedia.org/wiki/I_Can_Has_Cheezburger%3F)
 
 
 

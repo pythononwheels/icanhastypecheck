@@ -18,9 +18,9 @@ def typesafe(func):
 		From Marty Alchin 
 		(see)[http://www.amazon.de/Python-Experts-Voice-Open-Source/dp/1430227575]
 
-		:type func: types.FunctionType
+		:type func: FunctionType
 		
-		:rtype: type.NoneType
+		:rtype: NoneType
 	"""
 	
 	
