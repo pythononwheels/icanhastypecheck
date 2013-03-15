@@ -1,5 +1,5 @@
-IcanHasTypeCheck (ICHTC)
-==================
+#IcanHasTypeCheck (ICHTC)
+
 
 is a simple python module/library to enable dynamic type checking for python 
 method/function calls. Implemented as a decortor. Workinf for python 2.x and 3.x.
