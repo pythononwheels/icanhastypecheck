@@ -26,7 +26,7 @@ They were implemented in [Python 3.0](http://docs.python.org/3.0/whatsnew/3.0.ht
 The @typesafe decorator will then check all arguments dynamically whenever the foo is called for valid types.
 As a quoting remark from the PEP 3107: "All annotated parameter types can be any python expression. "
 But for typechecking only types make sense, though.
-The whole idea and parts of the implementation came from the book: [Pro Python (Expert's Voice in Open Source)](http://www.amazon.de/Python-Experts-Voice-Open-Source/dp/1430227575)
+The idea and parts of the implementation were inspired by the book: [Pro Python (Expert's Voice in Open Source)](http://www.amazon.de/Python-Experts-Voice-Open-Source/dp/1430227575)
 
 ## Python 2.x
 Since function annotations are not available in python 2.x the way I chose to implement typechecking for
