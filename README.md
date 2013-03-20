@@ -22,9 +22,9 @@ There is an alternative approach for those of you who don't like docstings in sp
 	@typesafe
 	def foo(param_a, param_b):
 		""" 
-			:type param_a: 	StringType
-			:type param_b: 	IntType
-			:rtype: 		BooleanType	
+			:type param_a: 	types.StringType
+			:type param_b: 	types.IntType
+			:rtype: 		types.BooleanType	
 		 """
 		# Do Something 
 		return True
@@ -37,9 +37,9 @@ So if you have defined a Point() class in mod1 then  you could specify is like:
 	def foo(afunc):
 		""" 
 			:type afunc: 	mod1.Point			
-			:rtype: 		BooleanType
+			:rtype: 		types.BooleanType
 		"""
-		pass
+		return True
 ```
 
 The decorator typesafe will first check if it is running in a 3.x or 2.x environment and 

@@ -14,14 +14,23 @@ import types
 ALL_PARAM_TYPES_PATTERN = r":type[\s]+(\w+):[\s]+([\w\.]+)"
 ALL_RETURN_TYPES_PATTERN = r":rtype:[\s]+([\w\.]+)"
 
-def print_list(name, l):
+def print_list(name, alist):
+	""" just printing a parameter list in a readable way
+		:type name: 	types.StringType
+		:type alist: 	types.ListType
+	"""
 	print "%s" % (name)
 	print "--------------------"
-	for elem in l:
+	for elem in alist:
 		print elem
 	print
 
 def print_func_spec(func):
+	""" print a function specification including 
+		function arguments and type specs.
+		:type func: types.FunctionType
+	"""
+
 	spec = inspect.getargspec(func)
 	doc = inspect.getdoc(func)
 	print "Specification for function: %s" % (str(func))
@@ -38,6 +47,10 @@ def print_func_spec(func):
 
 	
 def get_class_type(kls):
+	"""
+		get and return the type of a class 
+		:type kls: types.StringType
+	"""
 	#print "get_class_type for %s" % (kls)
 	if kls.count(".") > 0:
 		#kls_instance = reduce(getattr, str.split("."), sys.modules[__name__])
@@ -63,9 +76,9 @@ def typesafe(func):
 		From Marty Alchin 
 		(see)[http://www.amazon.de/Python-Experts-Voice-Open-Source/dp/1430227575]
 
-		:type func: FunctionType
+		:type func: types.FunctionType
 		
-		:rtype: NoneType
+		:rtype: types.FunctionType
 	"""
 	
 	#print "-"*70
