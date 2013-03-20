@@ -48,6 +48,8 @@ def get_class_type(kls):
 		#print module, mod, klass
 		kls_instance = getattr(mod, klass)
 	else:
+		#print dir(sys.modules[__name__])
+		#print sys.modules[__name__]
 		kls_instance = getattr(sys.modules[__name__], kls)
 	#print kls_instance
 	#print type(kls_instance)
