@@ -7,42 +7,39 @@
 import re, sys
 import inspect
 from typecheck import typesafe
+from mod1 import Point
+import typecheck
 
 @typesafe
 def foo( param_a, param_b):
 		""" 
-			:type param_a: IntType
-			:type param_b: StringType
+			:type param_a: types.IntType
+			:type param_b: types.StringType
 			:rtype: BooleanType	
 		 """
 		# Do Something 
 		print "foo"
 		return True
 
-def print_list(name, l):
-	print "%s list" % (name)
-	print "--------------------"
-	for elem in l:
-		print elem
-	print
 
-	
+
+@typesafe
+def mod_test( param_a ):
+	"""
+		:type param_a: mod1.Point
+	"""	
+	print "Yeah, I was called"
 
 
 if __name__ == "__main__":
+	# passes successfully (see function  spec above)
 	foo(1, "test2")
-	spec = inspect.getargspec(foo)
-	doc = inspect.getdoc(foo)
-	print spec
-	print doc
-	
-	types = re.compile(r":type[\s]+(\w+):[\s]+(\w+)", re.IGNORECASE)	
-	rtypes = re.compile(r":rtype:[\s]+(\w+)", re.IGNORECASE)	
-	res = types.findall(doc)
-	print_list("type", res)
-	res = rtypes.findall(doc)
-	print_list("rtype", res)
+	# fails 'successfully' (see function  spec above)
+	#foo(1, 2)
+	p = Point()
+	mod_test(p)
+	typecheck.print_func_spec(mod_test)
 
-	rtypes = rtypes.findall(doc)
+	
 
 
