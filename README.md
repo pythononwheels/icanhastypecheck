@@ -1,8 +1,9 @@
 #IcanHasTypeCheck (ICHTC)
 
 
-is a small and easy to use python module/library to enable dynamic type checking for python 
-method and function calls. Implemented as a decorator. Working ans tested for python 2.x .
+is a small and easy to use decorator to enable dynamic type checking for python 
+method and function calls. Working ans tested for python 2.7 but should run in other 2.x as well.
+Create an [issue](https://github.com/pythononwheels/icanhastypecheck/issues) on github if you encounter any problems using it.
 (Plans and an example implementation for python 3.x is included )
 
 Function type specification is based on a naming/docstring convention for python &lt; 3.x
