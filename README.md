@@ -33,7 +33,20 @@ There is an alternative approach for those of you who don't like docstings in sp
 ###You can use any type. 
 
 So if you have defined a Point() class in mod1 then  you could specify is like:
+
+class Point(object):
+	```python
+		# File: mod1.py
+   		def __init__(self, x = None, y = None):
+			""" Initialize the Point. Can be used to give x,y directly."""
+			self.x = x
+			self.y = y
+	```
+
 ```python
+	# another module.py
+	from mod1 import Point
+
 	def foo(afunc):
 		""" 
 			:type afunc: 	mod1.Point			
@@ -44,6 +57,13 @@ So if you have defined a Point() class in mod1 then  you could specify is like:
 
 The decorator typesafe will first check if it is running in a 3.x or 2.x environment and 
 react accordingly.
+
+### Installation and Example:
+
+Just download the zip or tarball. Unpack it and run 
+    
+    pyhton i_is_example.py
+
 
 
 ####Alternative Syntax and thoughts:
