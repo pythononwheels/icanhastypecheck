@@ -13,9 +13,9 @@ import typecheck
 @typesafe
 def foo( param_a, param_b):
 		""" 
-			:type param_a: types.IntType
-			:type param_b: types.StringType
-			:rtype: BooleanType	
+			:type param_a: 	types.IntType
+			:type param_b: 	types.StringType
+			:rtype: 		types.BooleanType	
 		 """
 		# Do Something 
 		print "foo"
