@@ -2,31 +2,14 @@
 
 
 is a small and easy to use python module/library to enable dynamic type checking for python 
-method and function calls. Implemented as a decorator. Working for python 2.x and 3.x.
+method and function calls. Implemented as a decorator. Working ans tested for python 2.x .
+(Plans and an example implementation for python 3.x is included )
 
-Based on annotations for python &gt; 3.x and a naming/docstring convention for python &lt; 3.x
+Function type specification is based on a naming/docstring convention for python &lt; 3.x
 
-It is implemented as a decorator that can be attached to any function or method and will
+Typechecking is implemented as a decorator that can be attached to any function or method and will
 perform the according (dynamic) typechecking.
 It will raise a TypeError if the arguments don't match the function specification.
-
-## Python 3.x
-The base technique for IcanHasTypeCheck in python 3.x are the Function Annotations proposed 
-in [PEP 3107](http://www.python.org/dev/peps/pep-3107/). 
-They were implemented in [Python 3.0](http://docs.python.org/3.0/whatsnew/3.0.html) (see section New Syntax).
-
-###Syntax for python 3.x:
-
-```python
-	@typesafe
-	def foo(param_a: str, param_b: int) -> bool:
-		# Do Something 
-		return True
-```
-The @typesafe decorator will then check all arguments dynamically whenever the foo is called for valid types.
-As a quoting remark from the PEP 3107: "All annotated parameter types can be any python expression. "
-But for typechecking only types make sense, though.
-The idea and parts of the implementation were inspired by the book: [Pro Python (Expert's Voice in Open Source)](http://www.amazon.de/Python-Experts-Voice-Open-Source/dp/1430227575)
 
 ## Python 2.x
 Since function annotations are not available in python 2.x the way I chose to implement typechecking for
@@ -47,15 +30,16 @@ There is an alternative approach for those of you who don't like docstings in sp
 		return True
 ```
 
-###Types can be specified as defined in the types module. Like:
+###You can use any type. 
+
+So if you have defined a Point() class in mod1 then  you could specify is like:
 ```python
-	def foo(afunc, param_b):
+	def foo(afunc):
 		""" 
-			:type afunc: 	FunctionType
-			:type param_b: 	NoneType
+			:type afunc: 	mod1.Point			
 			:rtype: 		BooleanType
 		"""
-		...
+		pass
 ```
 
 The decorator typesafe will first check if it is running in a 3.x or 2.x environment and 
@@ -84,6 +68,24 @@ It will look like this: (the docstring is not mandatory, then.)
 		return True
 ```
 
+
+## Python 3.x (Just an implementation example -> Not tested)
+The base technique for IcanHasTypeCheck in python 3.x are the Function Annotations proposed 
+in [PEP 3107](http://www.python.org/dev/peps/pep-3107/). 
+They were implemented in [Python 3.0](http://docs.python.org/3.0/whatsnew/3.0.html) (see section New Syntax).
+
+###Syntax for python 3.x:
+
+```python
+	@typesafe
+	def foo(param_a: str, param_b: int) -> bool:
+		# Do Something 
+		return True
+```
+The @typesafe decorator will then check all arguments dynamically whenever the foo is called for valid types.
+As a quoting remark from the PEP 3107: "All annotated parameter types can be any python expression. "
+But for typechecking only types make sense, though.
+The idea and parts of the implementation were inspired by the book: [Pro Python (Expert's Voice in Open Source)](http://www.amazon.de/Python-Experts-Voice-Open-Source/dp/1430227575)
 
 ### Why is it called IcanHasTypeCheck ?
 
