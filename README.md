@@ -17,7 +17,22 @@ Since function annotations are not available in python 2.x the way I chose to im
 python 2.x is a documentation convention for parameters based on [the info field lists of sphinx](http://sphinx-doc.org/markup/desc.html#info-field-lists). So even when you don't use typechecking you can use it to auto-generate a function documentation.
 There is an alternative approach for those of you who don't like docstings in sphinx format which úses a naming convention. (See Alternatives below)
 
-###Syntax for python 2.x / docstrings:
+
+###Syntax for python 2.x using decorstor arguments:
+
+```python
+	@typesafe( { "param_a" : "types.StringType", 
+				 "param_b" : "types.IntType", 
+				 "rtype" : "types.BooleanType" }
+			  )
+	def foo(param_a, param_b):
+		""" Some Docstring Info		 """
+		# Do Something 
+		return True
+```
+
+
+###Syntax for python 2.x using (sphinx style) docstrings:
 
 ```python
 	@typesafe
@@ -31,7 +46,7 @@ There is an alternative approach for those of you who don't like docstings in sp
 		return True
 ```
 
-###You can use any type. 
+###You can use any python type. 
 
 So if you have defined a Point() class in mod1 then  you could specify is like:
 
@@ -65,30 +80,8 @@ Just download the zip or tarball. Unpack it and run
     
     pyhton i_is_example.py
 
-
-
-####Alternative Syntax and thoughts:
-
-
-An alternative to the current way for type declarations could be to use
-a simple argument naming_convention: using a type as argument prefix.
-This might speed up the matching calculation but has the drawback
-of binding the type semantically to the argument name. Will be more effort if
-type changes during code evolution. On the other hand gives type info right
-where you might need it.  Anyway. I might add this as an option. 
-
-It will look like this: (the docstring is not mandatory, then.)
-
-```python
-	@typesafe
-	def foo(str_param_a, int_param_b):
-		""" 
-			Some Docstring ...
-		 """
-		# Do Something 
-		return True
-```
-
+It will successfully call two functions and then fail with a type error. Which is intended to
+show the functionality.
 
 ## Python 3.x (Just an implementation example -> Not tested)
 The base technique for IcanHasTypeCheck in python 3.x are the Function Annotations proposed 
