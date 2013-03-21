@@ -18,7 +18,7 @@ python 2.x is a documentation convention for parameters based on [the info field
 There is an alternative approach for those of you who don't like docstings in sphinx format which úses a naming convention. (See Alternatives below)
 
 
-###Syntax for python 2.x using decorstor arguments:
+###Syntax for python 2.x using decorator arguments:
 
 ```python
 	@typesafe( { "param_a" : "types.StringType", 
