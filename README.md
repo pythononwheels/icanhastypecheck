@@ -21,9 +21,10 @@ There is an alternative approach for those of you who don't like docstings in sp
 ###Syntax for python 2.x using decorator arguments:
 
 ```python
-	@typesafe( { "param_a" : "types.StringType", 
-				 "param_b" : "types.IntType", 
-				 "rtype" : "types.BooleanType" }
+	@typesafe( { "param_a" : str, 
+				 "param_b" : types.IntType, 
+				 "param_c" : own_module.OwnType
+				 "rtype"   : bool }
 			  )
 	def foo(param_a, param_b):
 		""" Some Docstring Info		 """

@@ -51,21 +51,25 @@ def get_class_type(kls):
 		get and return the type of a class 
 		:type kls: types.StringType
 	"""
-	#print "get_class_type for %s" % (kls)
-	if kls.count(".") > 0:
-		#kls_instance = reduce(getattr, str.split("."), sys.modules[__name__])
-		#print "partitioned: ", kls.rpartition(".")
-		module = kls.rpartition(".")[0]
-		mod = __import__(module, globals(), locals(), [], -1)
-		klass = kls.rpartition(".")[2]
-		#print module, mod, klass
-		kls_instance = getattr(mod, klass)
+	#print "get_class_type for %s" % (kls), type(kls)
+	if type(kls) == str:
+		if kls.count(".") > 0:
+			#kls_instance = reduce(getattr, str.split("."), sys.modules[__name__])
+			#print "partitioned: ", kls.rpartition(".")
+			module = kls.rpartition(".")[0]
+			mod = __import__(module, globals(), locals(), [], -1)
+			klass = kls.rpartition(".")[2]
+			#print module, mod, klass
+			kls_instance = getattr(mod, klass)
+		else:
+			#print dir(sys.modules[__name__])
+			#print sys.modules[__name__]
+			kls_instance = getattr(sys.modules[__name__], kls)
+		#print kls_instance
+		#print type(kls_instance)
 	else:
-		#print dir(sys.modules[__name__])
-		#print sys.modules[__name__]
-		kls_instance = getattr(sys.modules[__name__], kls)
-	#print kls_instance
-	#print type(kls_instance)
+		print "type was not str"	
+		kls_instance = kls
 	return kls_instance
 
 def typesafe(parameter_spec = None):
