@@ -26,7 +26,7 @@ There is an alternative approach for those of you who don't like docstings in sp
 				 "param_c" : own_module.OwnType
 				 "rtype"   : bool }
 			  )
-	def foo(param_a, param_b):
+	def foo(param_a, param_b, param_c):
 		""" Some Docstring Info		 """
 		# Do Something 
 		return True
