@@ -7,7 +7,7 @@
 import re, sys
 import inspect
 from typecheck import typesafe
-from mod1 import Point
+import mod1 
 import typecheck
 
 @typesafe()
@@ -23,7 +23,7 @@ def foo( param_a, param_b):
 
 
 #{ "param_a" : "mod1.Point"}
-@typesafe({ "param_a": "mod1.Point"})
+@typesafe({ "param_a": str})
 def mod_test( param_a ):
 	"""
 		:type param_a: mod1.Point
@@ -36,8 +36,8 @@ if __name__ == "__main__":
 	foo(1, "test")
 	# fails 'successfully' (see function  spec above)
 	#foo(1, 2)
-	p = Point()
-	mod_test(p)
+	p = mod1.Point()
+	mod_test("test")
 	typecheck.print_func_spec(foo)
 	# the following call of foo will fail because it passes 
 	# an int as second parameter instead of the specified str
