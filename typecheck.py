@@ -152,8 +152,8 @@ def typesafe(parameter_spec = None):
 					else:
 						#print fine %  ( name, type_dict[name], type(arg).__name__ ) 
 						pass
-				return func
-			return wrapper
+			return func
+		return wrapper
 	return typecheck
 			
 
