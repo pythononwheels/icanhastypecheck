@@ -1,6 +1,7 @@
 #
 # exmaple Module for TypeCheck Test
 # 
+import os
 
 class Point(object):
 	
@@ -13,4 +14,13 @@ class Point(object):
 		self.x = x
 		self.y = y		
 
+	def __repr__(self):
+		ostr = ""
+		ostr = "x: " + str(self.x) + os.linesep
+		ostr += "y: " + str(self.y) + os.linesep
+		return ostr
+	
+	def __str__(self):
+		return self.__repr__()
 		
+

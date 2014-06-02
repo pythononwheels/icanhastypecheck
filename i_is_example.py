@@ -23,25 +23,45 @@ def foo( param_a, param_b):
 
 
 #{ "param_a" : "mod1.Point"}
-@typesafe({ "param_a": str})
-def mod_test( param_a ):
+@typesafe({ "param_a": str })
+def bar( param_a ):
 	"""
 		:type param_a: mod1.Point
 	"""	
 	print "Yeah, I was called"
 
 
+@typesafe({ "val" : mod1.Point })
+def point_check( val ):
+	""" gets a point and prints it """
+	print " ** Printing a mod1.Point "
+	print val
+	return
+
 if __name__ == "__main__":
 	# passes successfully (see function  spec above)
+	# foo uses the sphinx documentation style to specify the
+	# function parameter types
 	foo(1, "test")
-	# fails 'successfully' (see function  spec above)
-	#foo(1, 2)
-	p = mod1.Point()
-	mod_test("test")
+	
+	# calls bar function which uses the decorator parmaters
+	# to specify the function parameter types
+	bar("test")
+	
+	# this will (pretty)print a function specification
 	typecheck.print_func_spec(foo)
-	# the following call of foo will fail because it passes 
-	# an int as second parameter instead of the specified str
-	foo(1,2)
+	
+	# uses a user defined class (mod1.Point, see mod1.py) 
+	# as the specified/required type for function point_check
+	p = mod1.Point()
+	p.x = 11
+	p.y = 4
+	point_check(p)
+
+	# the following call of foo will fail (successfuly) 
+	# with a TypeError because it passes an int as second 
+	# parameter instead of the specified str
+	#foo(1,2)
 
 	
 

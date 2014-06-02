@@ -10,6 +10,7 @@ import re
 import sys
 from itertools import chain
 import types
+import string
 
 ALL_PARAM_TYPES_PATTERN = r":type[\s]+(\w+):[\s]+([\w\.]+)"
 ALL_RETURN_TYPES_PATTERN = r":rtype:[\s]+([\w\.]+)"
@@ -19,11 +20,10 @@ def print_list(name, alist):
 		:type name: 	types.StringType
 		:type alist: 	types.ListType
 	"""
-	print "%s" % (name)
-	print "--------------------"
+	print " ** %s" % (name)
+	print "-"*50
 	for elem in alist:
-		print elem
-	print
+		print "\t" + elem[0] + "\t" + elem[1]
 
 def print_func_spec(func):
 	""" print a function specification including 
@@ -33,17 +33,22 @@ def print_func_spec(func):
 
 	spec = inspect.getargspec(func)
 	doc = inspect.getdoc(func)
-	print "Printing specification for function: %s" % (str(func))
+	print
+	print " ** Printing specification for function: %s" % (str(func))
 	print "-"*70
-	print "getargspec: %s" % (str(spec))
-	print "Parameter Type spec in docstring: %s" % (doc)
+	print "  getargspec: %s" % (str(spec))
+	print "  Parameter Type spec in docstring: " 
+	print string.replace("\t" + doc,"\n", "\n\t")
+
 	
 	types = re.compile(ALL_PARAM_TYPES_PATTERN, re.IGNORECASE)	
 	rtypes = re.compile(ALL_RETURN_TYPES_PATTERN, re.IGNORECASE)	
 	res = types.findall(doc)
 	print_list("Listing parameter types", res)
 	res = rtypes.findall(doc)
-	print_list("return type", res)
+	print " ** return type"
+	print "-"*50
+	print "\t" + res[0]
 
 	
 def get_class_type(kls):
@@ -68,7 +73,7 @@ def get_class_type(kls):
 		#print kls_instance
 		#print type(kls_instance)
 	else:
-		print "type was not str"	
+		#print "type was not str"	
 		kls_instance = kls
 	return kls_instance
 
@@ -128,7 +133,7 @@ def typesafe(parameter_spec = None):
 				all_param_types = re.compile(ALL_PARAM_TYPES_PATTERN, re.IGNORECASE)	
 				all_rtypes = re.compile(ALL_RETURN_TYPES_PATTERN, re.IGNORECASE)	
 				all_types = all_param_types.findall(doc)	
-			#print "all_types:", all_types
+			print "all_types:", all_types
 			for name, atype in all_types:
 				#print "trying to get Type %s for: %s" % (name, atype)
 				obj = get_class_type(atype)
