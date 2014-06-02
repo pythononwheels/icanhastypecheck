@@ -133,7 +133,7 @@ def typesafe(parameter_spec = None):
 				all_param_types = re.compile(ALL_PARAM_TYPES_PATTERN, re.IGNORECASE)	
 				all_rtypes = re.compile(ALL_RETURN_TYPES_PATTERN, re.IGNORECASE)	
 				all_types = all_param_types.findall(doc)	
-			print "all_types:", all_types
+			#print "all_types:", all_types
 			for name, atype in all_types:
 				#print "trying to get Type %s for: %s" % (name, atype)
 				obj = get_class_type(atype)
