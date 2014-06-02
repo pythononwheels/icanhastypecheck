@@ -13,7 +13,7 @@ perform the according (dynamic) typechecking.
 It will raise a TypeError if the arguments don't match the function specification.
 
 ## Python 2.x
-Since function annotations are not available in python 2.x the way I chose to implement typechecking for python 2.x in two ways:
+Since function annotations are not available in python 2.x I chose to implement typechecking for python 2.x in two ways:
 
 * as a documentation convention for parameters based on [the info field lists of sphinx](http://sphinx-doc.org/markup/desc.html#info-field-lists). So even when you don't use typechecking you can use it to auto-generate a function documentation.
 * and as parameters for a decorator. For those of you who don't like docstings in sphinx format.
