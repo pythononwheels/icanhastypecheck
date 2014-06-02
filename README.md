@@ -13,63 +13,89 @@ perform the according (dynamic) typechecking.
 It will raise a TypeError if the arguments don't match the function specification.
 
 ## Python 2.x
-Since function annotations are not available in python 2.x the way I chose to implement typechecking for
-python 2.x is a documentation convention for parameters based on [the info field lists of sphinx](http://sphinx-doc.org/markup/desc.html#info-field-lists). So even when you don't use typechecking you can use it to auto-generate a function documentation.
-There is an alternative approach for those of you who don't like docstings in sphinx format which úses a naming convention. (See Alternatives below)
+Since function annotations are not available in python 2.x the way I chose to implement typechecking for python 2.x in two ways:
+
+* as a documentation convention for parameters based on [the info field lists of sphinx](http://sphinx-doc.org/markup/desc.html#info-field-lists). So even when you don't use typechecking you can use it to auto-generate a function documentation.
+* and as parameters for a decorator. For those of you who don't like docstings in sphinx format.
 
 
 ###Syntax for python 2.x using decorator arguments:
 
 ```python
-	@typesafe( { "param_a" : str, 
-				 "param_b" : types.IntType, 
-				 "param_c" : own_module.OwnType
-				 "rtype"   : bool }
-			  )
-	def foo(param_a, param_b, param_c):
-		""" Some Docstring Info		 """
-		# Do Something 
-		return True
+    @typesafe( { "param_a" : str, 
+                 "param_b" : types.IntType, 
+                 "param_c" : own_module.OwnType
+                 "rtype"   : bool }
+              )
+    def foo(param_a, param_b, param_c):
+        """ Some Docstring Info      """
+        # Do Something 
+        return True
 ```
 
 
 ###Syntax for python 2.x using (sphinx style) docstrings:
 
 ```python
-	@typesafe
-	def foo(param_a, param_b):
-		""" 
-			:type param_a: 	types.StringType
-			:type param_b: 	types.IntType
-			:rtype: 		types.BooleanType	
-		 """
-		# Do Something 
-		return True
+    @typesafe
+    def foo(param_a, param_b):
+        """ 
+            :type param_a:  types.StringType
+            :type param_b:  types.IntType
+            :rtype:         types.BooleanType   
+         """
+        # Do Something 
+        return True
 ```
 
 ###You can use any python type. 
 
-So if you have defined a Point() class in mod1 then  you could specify is like:
+So if you have defined a Point() class in mod1:
+```python
+   Class Point(object):
+    
+    def __init__(self, x = None, y = None):
+        """ Initialize the Point. Can be used to give x,y directly."""
+        self.x = x
+        self.y = y
 
-class Point(object):
-	```python
-		# File: mod1.py
-   		def __init__(self, x = None, y = None):
-			""" Initialize the Point. Can be used to give x,y directly."""
-			self.x = x
-			self.y = y
-	```
+    def set_coord(self, x , y):
+        self.x = x
+        self.y = y      
+
+    def __repr__(self):
+        ostr = ""
+        ostr = "x: " + str(self.x) + os.linesep
+        ostr += "y: " + str(self.y) + os.linesep
+        return ostr
+    
+    def __str__(self):
+        return self.__repr__()
+        
+```
+
+Then you could use it as a parameter type specification like this:
 
 ```python
-	# another module.py
-	from mod1 import Point
+    # another module.py
+    from mod1 import Point
 
-	def foo(afunc):
-		""" 
-			:type afunc: 	mod1.Point			
-			:rtype: 		types.BooleanType
-		"""
-		return True
+    def foo(afunc):
+        """ 
+            :type afunc:    mod1.Point          
+            :rtype:         types.BooleanType
+        """
+        return True
+```
+
+Or like this
+
+```python
+    @typesafe({ "val" : mod1.Point })
+    def point_check( val ):
+        """ gets a point and prints it """
+        print " ** Printing a mod1.Point "
+        print val
 ```
 
 The decorator typesafe will first check if it is running in a 3.x or 2.x environment and 
@@ -92,10 +118,10 @@ They were implemented in [Python 3.0](http://docs.python.org/3.0/whatsnew/3.0.ht
 ###Syntax for python 3.x:
 
 ```python
-	@typesafe
-	def foo(param_a: str, param_b: int) -> bool:
-		# Do Something 
-		return True
+    @typesafe
+    def foo(param_a: str, param_b: int) -> bool:
+        # Do Something 
+        return True
 ```
 The @typesafe decorator will then check all arguments dynamically whenever the foo is called for valid types.
 As a quoting remark from the PEP 3107: "All annotated parameter types can be any python expression. "
